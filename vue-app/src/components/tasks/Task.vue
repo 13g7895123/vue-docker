@@ -4,7 +4,7 @@
             <input class="form-check-input mt-0" 
                 type="checkbox" 
                 :class="completedClass"                 
-                :ckecked="task.is_completed"
+                :checked="task.is_completed"
                 @change="markTaskAsCompleted"
             />
             <div class="ms-2 flex-grow-1" 
