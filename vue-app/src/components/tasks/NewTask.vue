@@ -10,20 +10,23 @@
 
 <script setup>
 import { reactive } from 'vue';
+import { useTaskStore } from "../../stores/task"
+
+const store = useTaskStore()
+const { handleAddedTask } = store
 
 const newTask = reactive({
     name: '',
     is_completed: false
 })
 
-const emit = defineEmits(['added'])
-
-const addNewTask = event => {
+const addNewTask = async(event) => {
     if (event.target.value.trim()){     // .target.value 可以取得input值，且非空值
         newTask.name = event.target.value
         event.target.value = ''         // 將input值清空
-        emit('added', newTask)
+        await handleAddedTask(newTask)
     }
 }
+
 
 </script>
